@@ -6,14 +6,6 @@ import model.Player;
 public interface IGame
 {
 	/**
-	 * 改变游戏状态
-	 * 
-	 * @param state
-	 * @return
-	 */
-	public int changeState(int state);
-
-	/**
 	 * 玩家尝试进入房间
 	 * @param player
 	 * @return 错误码
