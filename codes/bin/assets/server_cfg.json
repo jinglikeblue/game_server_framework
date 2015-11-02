@@ -1,0 +1,35 @@
+{
+    "server": {
+        "port": 9527,
+        "buffer_size": 4096,
+        "fps": 30
+    },
+    "database": {
+        "adress": "localhost",
+        "port": 3306,
+        "password": "123456",
+        "name": "db_poker"
+    },
+    "config": {
+        "hall": {
+            "room": [
+                {
+                    "room_type": 1,
+                    "room_amount": 1000
+                },
+                {
+                    "room_type": 2,
+                    "room_amount": 1000
+                },
+                {
+                    "room_type": 3,
+                    "room_amount": 1000
+                },
+                {
+                    "room_type": 4,
+                    "room_amount": 900
+                }
+            ]
+        }
+    }
+}

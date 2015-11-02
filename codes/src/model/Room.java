@@ -7,4 +7,9 @@ public class Room
 	{
 		
 	}
+	
+	public void update()
+	{
+		
+	}
 }
