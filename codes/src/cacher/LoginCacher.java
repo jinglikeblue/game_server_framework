@@ -21,7 +21,7 @@ public class LoginCacher implements IProtocolCacher, IEventListener
 	@Override
 	public void onCacheProtocol(Client client, IPacket packet) throws IOException
 	{		
-
+		
 	}
 
 }

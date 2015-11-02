@@ -1,29 +1,71 @@
+
 package server;
 
 import java.io.IOException;
 
+import manager.DBMgr;
+import manager.DataMgr;
+import vo.serverConfig.ServerCfgDataBaseVO;
+import vo.serverConfig.ServerCfgServerVO;
+import vo.serverConfig.ServerCfgVO;
 import cacher.LoginCacher;
 import cacher.PingCacher;
+
+import com.google.gson.Gson;
+
 import consts.protocol.ProtocolC2S;
+import core.io.FileUtil;
+import core.net.server.Console;
 import core.net.server.Server;
 
 public class GameServer
 {
+
 	public GameServer()
 	{
 
 	}
-	
+
 	public void start()
 	{
-		Server server = Server.instance();	
-		server.registProtocolCacher(ProtocolC2S.LOGIN, new LoginCacher());
-		server.registProtocolCacher(ProtocolC2S.PING, new PingCacher());
-		server.registProtocolCacher(ProtocolC2S.ENTER_ROOM, new PingCacher());
-		server.registProtocolCacher(ProtocolC2S.EXIT_ROOM, new PingCacher());
+		loadConfig();
+		initMgr();
+		runServer();
+	}
+	
+	private void loadConfig()
+	{
+		Gson gson = new Gson();
+		String cfgStr = null;
 		try
 		{
-			server.run(9527, 4096, 30);
+			cfgStr = FileUtil.readFile("./src/assets/server_cfg.json");
+			ServerCfgVO cfgVO = gson.fromJson(cfgStr, ServerCfgVO.class);
+			DataMgr.cfgVO = cfgVO;
+		}
+		catch(IOException e)
+		{			
+			Console.log.error(e);
+		}	
+	}
+	
+	private void initMgr()
+	{
+		ServerCfgDataBaseVO vo = DataMgr.cfgVO.database;
+		DBMgr.init(vo.address, vo.port, vo.user, vo.pwd, vo.dbName);
+	}
+	
+	private void runServer()
+	{
+		Server server = Server.instance();
+		server.registProtocolCacher((short)ProtocolC2S.E.LOGIN.ordinal(), new LoginCacher());
+		server.registProtocolCacher((short)ProtocolC2S.E.PING.ordinal(), new PingCacher());
+		server.registProtocolCacher((short)ProtocolC2S.E.ENTER_ROOM.ordinal(), new PingCacher());
+		server.registProtocolCacher((short)ProtocolC2S.E.EXIT_ROOM.ordinal(), new PingCacher());
+		try
+		{
+			ServerCfgServerVO vo = DataMgr.cfgVO.server;
+			server.run(vo.port, vo.bufferSize, vo.fps);
 		}
 		catch(IOException e)
 		{
