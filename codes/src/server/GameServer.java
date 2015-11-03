@@ -17,6 +17,8 @@ import consts.protocol.ProtocolC2S;
 import core.io.FileUtil;
 import core.net.server.Console;
 import core.net.server.Server;
+import dao.PlayerDAO;
+import debug.DaoTest;
 
 public class GameServer
 {
@@ -52,7 +54,7 @@ public class GameServer
 	private void initMgr()
 	{
 		ServerCfgDataBaseVO vo = DataMgr.cfgVO.database;
-		DBMgr.init(vo.address, vo.port, vo.user, vo.pwd, vo.dbName);
+		DBMgr.init(vo.address, vo.port, vo.user, vo.pwd, vo.dbName);	
 	}
 	
 	private void runServer()
@@ -62,6 +64,7 @@ public class GameServer
 		server.registProtocolCacher((short)ProtocolC2S.E.PING.ordinal(), new PingCacher());
 		server.registProtocolCacher((short)ProtocolC2S.E.ENTER_ROOM.ordinal(), new PingCacher());
 		server.registProtocolCacher((short)ProtocolC2S.E.EXIT_ROOM.ordinal(), new PingCacher());
+		
 		try
 		{
 			ServerCfgServerVO vo = DataMgr.cfgVO.server;

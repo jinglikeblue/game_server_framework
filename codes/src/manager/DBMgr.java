@@ -1,5 +1,8 @@
 package manager;
 
+import core.db.worker.MysqlQueryWorker;
+import core.db.worker.MysqlUpdateWorker;
+
 
 /**
  * 数据库管理器
@@ -8,8 +11,8 @@ package manager;
  */
 public final class DBMgr
 {
-//	static public MysqlQueryWorker query = null;
-//	static public MysqlUpdateWorker update = null;
+	static public MysqlQueryWorker query = null;
+	static public MysqlUpdateWorker update = null;
 	
 	/**
 	 * 初始化数据管理器
@@ -22,14 +25,14 @@ public final class DBMgr
 	 */
 	static public boolean init(String address, int port, String user, String password, String dbName)
 	{
-//		query = MysqlQueryWorker.create(address, port, user, password, dbName);
-//		update = MysqlUpdateWorker.create(address, port, user, password, dbName);
-//		
-//		if(null == query || null == query)
-//		{
-//			System.out.println("database connect fail!");
-//			return false;
-//		}
+		query = MysqlQueryWorker.create(address, port, user, password, dbName);
+		update = MysqlUpdateWorker.create(address, port, user, password, dbName);
+		
+		if(null == query || null == query)
+		{
+			System.out.println("database connect fail!");
+			return false;
+		}
 		return true;
 	}
 }

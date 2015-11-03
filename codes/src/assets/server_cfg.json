@@ -8,8 +8,8 @@
         "address": "localhost",
         "port": 3306,
         "user": "root",
-        "password": "123456",
-        "dbName": "db_poker"
+        "pwd": "123456",
+        "dbName": "db_chess"
     },
     "rooms": [
         {

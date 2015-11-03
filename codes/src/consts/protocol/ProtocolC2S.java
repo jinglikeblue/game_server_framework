@@ -15,6 +15,9 @@ public class ProtocolC2S
 
 		/**
 		 * 登陆
+		 * int32 game_id
+		 * int16 pwd_length
+		 * char[] pwd
 		 */
 		LOGIN,
 

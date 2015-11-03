@@ -1,10 +1,13 @@
+import debug.DaoTest;
 import server.GameServer;
 
 public class Main
 {
 	public static void main(String[] args)
-	{				
-		GameServer gs = new GameServer();
-		gs.start();
+	{	
+		new DaoTest();
+		
+//		GameServer gs = new GameServer();
+//		gs.start();
 	}
 }
