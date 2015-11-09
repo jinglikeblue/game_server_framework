@@ -15,14 +15,14 @@ public class PingCacher implements IEventListener, IProtocolCacher
 	@Override
 	public void onCacheProtocol(Client client, IPacket packet) throws IOException
 	{
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public void onReciveEvent(String type, EventDispatcher dispatcher, Object data)
 	{
-		// TODO Auto-generated method stub
+		
 
 	}
 

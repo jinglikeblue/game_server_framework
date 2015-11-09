@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.HashSet;
 
-import manager.DBMgr;
 import manager.PlayerMgr;
 import core.db.worker.IMysqlWorkerUser;
 import core.events.EventDispatcher;
