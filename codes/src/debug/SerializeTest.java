@@ -20,7 +20,6 @@ public class SerializeTest
 		System.out.println(ba.readInt());
 		System.out.println(ba.readShort());		
 		System.out.println(ba.readUTFString());
-		System.out.println(ba.readLong());
-		
+		System.out.println(ba.readLong());		
 	}
 }
