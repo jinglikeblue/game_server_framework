@@ -64,3 +64,12 @@
 	at core.db.worker.AMysqlWorker$1.run(AMysqlWorker.java:54)
 	at java.lang.Thread.run(Unknown Source)
 
+2015-11-10 18:08:13    java.sql.SQLException: Column 'account' not found.
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:910)
+	at com.mysql.jdbc.ResultSet.findColumn(ResultSet.java:987)
+	at com.mysql.jdbc.ResultSet.getString(ResultSet.java:5584)
+	at dao.PlayerDAO.queryResult(PlayerDAO.java:50)
+	at core.db.worker.MysqlQueryWorker.excute(MysqlQueryWorker.java:38)
+	at core.db.worker.AMysqlWorker$1.run(AMysqlWorker.java:54)
+	at java.lang.Thread.run(Unknown Source)
+

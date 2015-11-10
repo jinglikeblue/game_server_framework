@@ -9,11 +9,11 @@ public interface IDaoUser
 {
 	/**
 	 * 查询回调
-	 * @param daoVO 查询返回的数据
+	 * @param daoVOs 查询返回的数据
 	 * @param key 需要回传的KEY
 	 * @param data 需要回传的数据
 	 */
-	void daoQueryResponse(Object daoVO, String key, Object data);
+	void daoQueryResponse(Object[] daoVOs, String key, Object data);
 	
 	/**
 	 * 更新回调

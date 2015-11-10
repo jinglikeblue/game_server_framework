@@ -15,12 +15,12 @@ public class DaoTest implements IDaoUser
 	}
 
 	@Override
-	public void daoQueryResponse(Object daoVO, String key, Object data)
+	public void daoQueryResponse(Object[] daoVOs, String key, Object data)
 	{
 		PlayerDaoVO vo = null;
-		if(daoVO != null)
+		if(daoVOs != null)
 		{
-			 vo = (PlayerDaoVO)daoVO;
+			 vo = (PlayerDaoVO)daoVOs[0];
 		}
 		System.out.println(vo.name);
 	}
