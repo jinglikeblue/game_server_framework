@@ -7,8 +7,9 @@ import java.io.IOException;
 import java.util.HashSet;
 
 import manager.PlayerMgr;
+import model.Player;
 import vo.dao.PlayerDaoVO;
-import vo.packetVO.LoginVO;
+import vo.protocolVO.PLoginVO;
 import core.events.EventDispatcher;
 import core.events.IEventListener;
 import core.net.server.Client;
@@ -39,7 +40,7 @@ public class LoginCacher implements IProtocolCacher, IEventListener, IDaoUser
 
 		// 加入到客户端请求集
 		clientRequestSet.add(client);
-		LoginVO loginVO = new LoginVO(packet.getProtoData());
+		PLoginVO loginVO = new PLoginVO(packet.getProtoData());
 		// 请求用户数据
 		new PlayerDAO(this, "query user", client).queryPlayer(loginVO.gameId, loginVO.pwd);
 	}
@@ -49,23 +50,27 @@ public class LoginCacher implements IProtocolCacher, IEventListener, IDaoUser
 	{
 		if(null != daoVOs)
 		{
-			PlayerDaoVO playerDaoVO = (PlayerDaoVO)daoVOs[0];
-			Client client = (Client)data;
-			if(false == clientRequestSet.remove(client))
-			{
-				// 数据移除出错！！！
-			}
+			gotPlayerData((Client)data, (PlayerDaoVO)daoVOs[0]);
 		}
 		else
 		{
-			//玩家不存在
-		}		
+			// 玩家不存在
+		}
 	}
 
 	@Override
 	public void daoUpdateResponse(int effectedCount, String key, Object data)
 	{
 
+	}
+
+	private void gotPlayerData(Client client, PlayerDaoVO vo)
+	{
+		if(clientRequestSet.remove(client))
+		{
+			Player p = new Player(client, vo);
+			PlayerMgr.addPlayer(p);
+		}
 	}
 
 }

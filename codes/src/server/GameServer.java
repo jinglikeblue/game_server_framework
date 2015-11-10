@@ -13,12 +13,11 @@ import cacher.PingCacher;
 
 import com.google.gson.Gson;
 
+import consts.PathDefine;
 import consts.protocol.ProtocolC2S;
 import core.io.FileUtil;
 import core.net.server.Console;
 import core.net.server.Server;
-import dao.PlayerDAO;
-import debug.DaoTest;
 
 public class GameServer
 {
@@ -41,7 +40,7 @@ public class GameServer
 		String cfgStr = null;
 		try
 		{
-			cfgStr = FileUtil.readFile("./src/assets/server_cfg.json");
+			cfgStr = FileUtil.readFile(PathDefine.SERVER_CFG);
 			ServerCfgVO cfgVO = gson.fromJson(cfgStr, ServerCfgVO.class);
 			DataMgr.cfgVO = cfgVO;
 		}

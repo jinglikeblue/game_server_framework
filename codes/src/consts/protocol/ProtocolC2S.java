@@ -23,11 +23,19 @@ public class ProtocolC2S
 
 		/**
 		 * 心跳
+		 * int32 client_utc
 		 */
 		PING,
 
 		/**
+		 * 获取场景列表
+		 */
+		SCENE_LIST,
+		
+		/**
 		 * 进入房间
+		 * int16 scene_id	场景ID		
+		 * int32 room_id	房间ID	if(value<=0)表示快速进入
 		 */
 		ENTER_ROOM,
 

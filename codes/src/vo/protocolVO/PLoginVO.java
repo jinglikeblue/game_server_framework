@@ -1,14 +1,14 @@
-package vo.packetVO;
+package vo.protocolVO;
 
-import core.net.server.ByteArray;
+import core.net.server.utils.ByteArray;
 
 
-public class LoginVO
+public class PLoginVO
 {
 	public int gameId;
 	public String pwd;
 	
-	public LoginVO(byte[] bytes)
+	public PLoginVO(byte[] bytes)
 	{		
 		ByteArray ba = new ByteArray(bytes);
 		this.gameId = ba.readInt();
