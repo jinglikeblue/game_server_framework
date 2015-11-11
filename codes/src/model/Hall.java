@@ -19,14 +19,26 @@ public class Hall
 	 * 场景
 	 */
 	private HashMap<Integer, Scene> _scene = new HashMap<Integer, Scene>();
+	
+	public HashMap<Integer, Scene> scene()
+	{
+		return _scene;
+	}
+	
+	public Scene getScene(int sceneId)
+	{
+		return _scene.get(sceneId);
+	}
 
 	public Hall()
-	{
+	{		
 		for(int i = 0; i < DataMgr.cfgVO.rooms.length; i++)
 		{
 			ServerCfgRoomVO vo = DataMgr.cfgVO.rooms[i];
 			createScene(vo.scene, vo.roomAmount);
 		}
+		
+		System.out.println("scene size:" + _scene.size());
 	}
 
 	private void createScene(int id, int roomAmount)

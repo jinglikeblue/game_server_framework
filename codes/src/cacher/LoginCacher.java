@@ -6,6 +6,7 @@ import interfaces.IDaoUser;
 import java.io.IOException;
 import java.util.HashSet;
 
+import manager.HallMgr;
 import manager.PlayerMgr;
 import model.Player;
 import vo.dao.PlayerDaoVO;
@@ -75,6 +76,7 @@ public class LoginCacher implements IProtocolCacher, IEventListener, IDaoUser
 			p.channel().playerInfo(p.daoVO().name);
 			
 			//返回场景列表
+			p.channel().sceneListResponse(HallMgr.hall);
 		}
 	}
 

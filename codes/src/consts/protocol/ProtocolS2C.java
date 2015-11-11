@@ -28,7 +28,7 @@ public class ProtocolS2C
 		/**
 		 * 场景列表返回		  
 		 * [
-		 * 		int16 scene_id		场景ID
+		 * 		int32 scene_id		场景ID
 		 * 		int32 player_count 	玩家数量
 		 * ]
 		 */
@@ -36,7 +36,7 @@ public class ProtocolS2C
 		
 		/**
 		 * 房间列表返回
-		 * int16 scene_id	场景ID
+		 * int32 scene_id	场景ID
 		 * [
 		 * 		int32 room_id	房间ID
 		 * 		int16 roomplayer_count	 房间中玩家数	

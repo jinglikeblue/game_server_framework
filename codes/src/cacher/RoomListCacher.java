@@ -1,29 +1,31 @@
+
 package cacher;
 
 import java.io.IOException;
 
-import core.events.EventDispatcher;
-import core.events.IEventListener;
+import manager.HallMgr;
+import manager.PlayerMgr;
+import model.Player;
+import vo.protocolVO.PRoomListVO;
 import core.net.server.Client;
 import core.net.server.interfaces.IPacket;
 import core.net.server.interfaces.IProtocolCacher;
 
-
-public class RoomListCacher implements IEventListener, IProtocolCacher
+public class RoomListCacher implements IProtocolCacher
 {
 
 	@Override
 	public void onCacheProtocol(Client client, IPacket packet) throws IOException
 	{
-		// TODO Auto-generated method stub
+		Player p = PlayerMgr.getPlayer(client);
+		if(null == p)
+		{
+			client.dispose();
+			return;
+		}
 
-	}
-
-	@Override
-	public void onReciveEvent(String type, EventDispatcher dispatcher, Object data)
-	{
-		// TODO Auto-generated method stub
-
+		int sceneId = new PRoomListVO(packet.getProtoData()).sceneId;
+		p.channel().roomListResponse(HallMgr.hall.getScene(sceneId));
 	}
 
 }

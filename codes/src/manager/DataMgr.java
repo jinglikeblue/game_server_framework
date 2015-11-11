@@ -5,5 +5,9 @@ import vo.serverConfig.ServerCfgVO;
 
 public final class DataMgr
 {
-	static public ServerCfgVO cfgVO = null;
+	/**
+	 * 服务器配置信息
+	 */
+	static public ServerCfgVO cfgVO = null;	
+	
 }
