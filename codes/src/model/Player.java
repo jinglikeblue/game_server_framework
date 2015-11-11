@@ -1,6 +1,7 @@
 
 package model;
 
+import server.Channel;
 import vo.dao.PlayerDaoVO;
 import core.net.server.Client;
 
@@ -22,6 +23,18 @@ public class Player
 	public Client client()
 	{
 		return _client;
+	}
+
+	private Channel _channel = null;
+
+	/**
+	 * 和客户端通信的通道
+	 * 
+	 * @return
+	 */
+	public Channel channel()
+	{
+		return _channel;
 	}
 
 	private int _id = -1;
@@ -53,5 +66,7 @@ public class Player
 		this._daoVO = vo;
 		this._id = vo.gameId;
 		_client = client;
+		_channel = new Channel(client);
 	}
+
 }

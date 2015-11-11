@@ -70,6 +70,11 @@ public class LoginCacher implements IProtocolCacher, IEventListener, IDaoUser
 		{
 			Player p = new Player(client, vo);
 			PlayerMgr.addPlayer(p);
+			
+			//返回玩家信息
+			p.channel().playerInfo(p.daoVO().name);
+			
+			//返回场景列表
 		}
 	}
 

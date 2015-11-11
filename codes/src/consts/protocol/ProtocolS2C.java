@@ -14,12 +14,6 @@ public class ProtocolS2C
 		NONE,
 
 		/**
-		 * 登陆返回
-		 * int8 error 不为0则表示失败
-		 */
-		LOGIN_RESPONSE,
-
-		/**
 		 * 用户信息
 		 * string player_name
 		 */
@@ -36,13 +30,20 @@ public class ProtocolS2C
 		 * [
 		 * 		int16 scene_id		场景ID
 		 * 		int32 player_count 	玩家数量
-		 * 		[
-		 * 			int32	room_id				房间ID
-		 * 			int16	room_player_count	房间中玩家数 			 			
-		 * 		]
 		 * ]
 		 */
 		SCENE_LIST_RESPONSE,
+		
+		/**
+		 * 房间列表返回
+		 * int16 scene_id	场景ID
+		 * [
+		 * 		int32 room_id	房间ID
+		 * 		int16 roomplayer_count	 房间中玩家数	
+		 * ]
+		 * 
+		 */
+		ROOM_LIST_RESPONSE,
 
 		/**
 		 * 进入房间返回

@@ -8,13 +8,13 @@ package vo.serverConfig;
 public class ServerCfgRoomVO
 {
 	/**
-	 * 房间类型
+	 * 场景
 	 */
-	public int type;
+	public int scene;
 	
 	/**
 	 * 房间的数量
 	 */
-	public int amount;
+	public int roomAmount;
 }
 

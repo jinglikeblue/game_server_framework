@@ -13,20 +13,20 @@
     },
     "rooms": [
         {
-            "type": 1,
-            "amount": 1000
+            "scene": 1,
+            "roomAmount": 1000
         },
         {
-            "type": 2,
-            "amount": 1000
+            "scene": 2,
+            "roomAmount": 1000
         },
         {
-            "type": 3,
-            "amount": 1000
+            "scene": 3,
+            "roomAmount": 1000
         },
         {
-            "type": 4,
-            "amount": 900
+            "scene": 4,
+            "roomAmount": 900
         }
     ]
 }
