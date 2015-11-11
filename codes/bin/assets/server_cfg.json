@@ -1,0 +1,32 @@
+{
+    "server": {
+        "port": 9528,
+        "bufferSize": 4096,
+        "fps": 10
+    },
+    "database": {
+        "address": "localhost",
+        "port": 3306,
+        "user": "root",
+        "pwd": "123456",
+        "dbName": "db_chess"
+    },
+    "rooms": [
+        {
+            "scene": 1,
+            "roomAmount": 1000
+        },
+        {
+            "scene": 2,
+            "roomAmount": 1000
+        },
+        {
+            "scene": 3,
+            "roomAmount": 1000
+        },
+        {
+            "scene": 4,
+            "roomAmount": 900
+        }
+    ]
+}
