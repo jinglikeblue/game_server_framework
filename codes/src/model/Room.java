@@ -1,6 +1,8 @@
 
 package model;
 
+import interfaces.IGame;
+
 import java.util.Vector;
 
 public class Room
@@ -27,15 +29,28 @@ public class Room
 		return _players;
 	}
 	
+	private IGame game;
+	
 	public Room(int id, int sceneId)
 	{
 		_id = id;
 		_sceneId = sceneId;
 		_players = new Vector<Player>();
 	}
+	
+	public void enter(Player player)
+	{
+		game.playerEnter(player);
+	}
+	
+	public void exit(Player player)
+	{
+		
+	}
 
 	public void update()
 	{
+		game.update();
 		System.out.println(String.format("room update id:%s sceneId:%s", _id, _sceneId));
 	}
 }

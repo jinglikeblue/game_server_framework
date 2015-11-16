@@ -34,6 +34,16 @@ public class Scene
 	{
 		return _rooms;
 	}
+	
+	public Room getRoom(int roomId)
+	{
+		if(roomId < 1 || roomId >= _rooms.length)
+		{
+			return null;
+		}
+		
+		return _rooms[roomId - 1];
+	}
 
 	private int _playerCount;
 

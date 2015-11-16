@@ -25,6 +25,11 @@ import core.io.FileUtil;
 import core.net.server.Console;
 import core.net.server.Server;
 
+/**
+ * 游戏服务器入口对象
+ * @author Jing
+ *
+ */
 public class Game
 {
 
