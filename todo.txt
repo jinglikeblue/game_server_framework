@@ -1,0 +1,1 @@
+1.game_server_framework不应该有配置文件，提供配置VO，由外部传入

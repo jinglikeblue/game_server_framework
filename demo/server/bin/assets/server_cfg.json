@@ -1,0 +1,13 @@
+{    
+    "serverPort":9527,
+    "serverBufferSize":4096,
+    "serverFPS":10,
+    "dbAddress":"localhost",
+    "dbPort":3306,
+    "dbUser":"root",
+    "dbPWD":"123456",
+    "dbName":"db_chess",
+    "sceneAmount":4,
+    "sceneRoomAmount":1000,
+    "roomPlayerAmount":2
+}
