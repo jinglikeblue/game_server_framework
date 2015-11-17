@@ -1,35 +1,29 @@
 
-package game;
+package model;
 
-import model.Player;
-
-public class Game
+public class AGame
 {
-
-	public Game()
-	{
-
-	}
-
+	protected Room room = null;
 	/**
-	 * 改变游戏状态
+	 * 绑定
 	 * 
-	 * @param state
-	 * @return
+	 * @param room
 	 */
-	public int changeState(int state)
+	protected void bind(Room room)
 	{
-		return 0;
+		this.room = room;
 	}
 
 	/**
 	 * 玩家尝试进入房间
+	 * 
 	 * @param player
 	 * @return 错误码
 	 */
 	public int playerEnter(Player player)
 	{
 		return 0;
+
 	}
 
 	/**
@@ -42,18 +36,20 @@ public class Game
 
 	/**
 	 * 玩家尝试退出房间
+	 * 
 	 * @param player
 	 * @return 错误码
 	 */
 	public int playerExit(Player player)
 	{
 		return 0;
+
 	}
 
 	/**
 	 * 玩家退出了房间
 	 */
-	public void onPlayerExit()
+	public void onPlayerExit(Player player)
 	{
 
 	}
@@ -63,7 +59,6 @@ public class Game
 	 */
 	public void update()
 	{
-		
+		//System.out.println("agame");
 	}
-
 }

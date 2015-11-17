@@ -47,6 +47,7 @@ public class ProtocolS2C
 
 		/**
 		 * 进入房间返回
+		 * int32 error		错误码
 		 */
 		ENTER_ROOM_RESPONSE,
 

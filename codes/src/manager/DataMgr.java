@@ -1,13 +1,14 @@
+
 package manager;
 
-import vo.serverConfig.ServerCfgVO;
-
+import vo.ServerInitConfigVO;
 
 public final class DataMgr
 {
+
 	/**
 	 * 服务器配置信息
 	 */
-	static public ServerCfgVO cfgVO = null;	
-	
+	static public ServerInitConfigVO cfgVO = null;
+
 }

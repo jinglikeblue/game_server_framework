@@ -82,7 +82,7 @@ public class Channel
 		{
 			Room room = scene.rooms()[i];
 			s.writeInt(room.id());
-			s.writeShort((short)room.players().size());
+			s.writeShort((short)room.playerCount());
 		}
 		send2Client(ProtocolS2C.E.ROOM_LIST_RESPONSE, s.toBytes());
 	}
@@ -90,9 +90,11 @@ public class Channel
 	/**
 	 * 进入房间返回
 	 */
-	public void enterRoomResponse()
+	public void enterRoomResponse(int error)
 	{
-
+		Serialize s = new Serialize();
+		s.writeInt(error);
+		send2Client(ProtocolS2C.E.ENTER_ROOM_RESPONSE, s.toBytes());
 	}
 
 	/**
@@ -100,7 +102,7 @@ public class Channel
 	 */
 	public void enterRoomNotify()
 	{
-
+		
 	}
 
 	/**

@@ -40,13 +40,15 @@ public class EnterRoomCacher implements IEventListener, IProtocolCacher
 			{
 				break;
 			}
-			
+
 			Room room = scene.getRoom(vo.roomId);
 			if(null == room)
 			{
 				break;
 			}
 
+			int error = room.enter(p);
+			p.channel().enterRoomResponse(error);
 			return;
 		} while(false);
 

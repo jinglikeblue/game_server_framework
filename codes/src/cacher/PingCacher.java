@@ -12,7 +12,6 @@ import core.net.server.interfaces.IProtocolCacher;
 
 public class PingCacher implements IProtocolCacher
 {
-
 	@Override
 	public void onCacheProtocol(Client client, IPacket packet) throws IOException
 	{

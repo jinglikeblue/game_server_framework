@@ -1,4 +1,4 @@
-import server.Game;
+import server.GameServer;
 
 public class Main
 {
@@ -8,7 +8,7 @@ public class Main
 		// new DaoTest();
 		// new SerializeTest();
 
-		Game g = new Game();
+		GameServer g = new GameServer(null, null);
 		g.start();
 	}
 }
