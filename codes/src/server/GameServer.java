@@ -54,7 +54,6 @@ public class GameServer
 	{
 		Server server = Server.instance();
 		server.addEventListener(Server.EVENT.ENTER_FRAME.name(), new ServerEnterFrameHandle());
-
 		server.registProtocolCacher((short)ProtocolC2S.E.LOGIN.ordinal(), new LoginCacher());
 		server.registProtocolCacher((short)ProtocolC2S.E.PING.ordinal(), new PingCacher());
 		server.registProtocolCacher((short)ProtocolC2S.E.SCENE_LIST.ordinal(), new SceneListCacher());

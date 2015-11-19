@@ -3,7 +3,19 @@ package model;
 
 public class AGame
 {
-	protected Room room = null;
+
+	protected Room _room = null;
+
+	/**
+	 * 和游戏绑定的房间
+	 * 
+	 * @return
+	 */
+	public Room room()
+	{
+		return _room;
+	}
+
 	/**
 	 * 绑定
 	 * 
@@ -11,7 +23,7 @@ public class AGame
 	 */
 	protected void bind(Room room)
 	{
-		this.room = room;
+		this._room = room;
 	}
 
 	/**
@@ -27,30 +39,14 @@ public class AGame
 	}
 
 	/**
-	 * 玩家进入了房间
-	 */
-	public void onPlayerEnter(Player player)
-	{
-
-	}
-
-	/**
 	 * 玩家尝试退出房间
 	 * 
 	 * @param player
 	 * @return 错误码
 	 */
-	public int playerExit(Player player)
+	public int playerExit(Player player, int seat)
 	{
 		return 0;
-
-	}
-
-	/**
-	 * 玩家退出了房间
-	 */
-	public void onPlayerExit(Player player)
-	{
 
 	}
 
@@ -59,6 +55,6 @@ public class AGame
 	 */
 	public void update()
 	{
-		//System.out.println("agame");
+		// System.out.println("agame");
 	}
 }

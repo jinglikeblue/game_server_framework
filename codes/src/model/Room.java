@@ -55,10 +55,17 @@ public class Room
 		return _playerCount;
 	}
 
+	private AGame _game;
+
 	/**
 	 * 与房间绑定的游戏逻辑
+	 * 
+	 * @return
 	 */
-	private AGame _game;
+	public AGame game()
+	{
+		return _game;
+	}
 
 	public Room(int id, int sceneId)
 	{
@@ -80,39 +87,45 @@ public class Room
 	public int enter(Player player)
 	{
 		int error = _game.playerEnter(player);
-		if(0 == error)
-		{
-			_playerCount++;
-			for(int i = 0; i < _players.length; i++)
-			{
-				if(_players[i] == null)
-				{
-					_players[i] = player;
-				}
-			}
-			_game.onPlayerEnter(player);
-		}
-
 		return error;
+	}
+
+	/**
+	 * 玩家进入了房间
+	 */
+	public void onPlayerEnter(Player player, int seat)
+	{
+		_players[seat] = player;
+		//通知玩家进入房间
+		player.channel().enterRoomResponse(error);
+		
+		//通知其他玩家该事件
+		for(int i = 0; i < _players.length; i++)
+		{
+			if(i != seat && null != _players[i])
+			{
+				Player p = _players[i];				
+				p.channel().enterRoomNotify();
+			}			
+		}
 	}
 
 	public int exit(Player player)
 	{
-		int error = _game.playerExit(player);
-		if(0 == error)
-		{
-			_playerCount--;
-			for(int i = 0; i < _players.length; i++)
-			{
-				if(_players[i] == player)
-				{
-					_players[i] = null;
-				}
-			}
-			_game.onPlayerExit(player);
-		}
-
+		int error = _game.playerExit(player, -1);
 		return error;
+	}
+
+	/**
+	 * 玩家退出了房间
+	 */
+	public void onPlayerExit(Player player, int seat)
+	{
+		_players[seat] = null;
+		
+		//通知玩家退出房间
+		
+		//通知其他玩家该事件
 	}
 
 	public void update()

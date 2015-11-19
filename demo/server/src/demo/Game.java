@@ -1,25 +1,43 @@
 
 package demo;
 
+import java.util.HashMap;
+
+import demo.consts.GameState;
+import demo.stateControlers.AControler;
+import demo.stateControlers.FreeSC;
+import demo.stateControlers.PlayingSC;
+import demo.stateControlers.ReadySC;
 import model.AGame;
 import model.Player;
 
 public class Game extends AGame
 {
 
+	public GameState state = GameState.FREE;
+
+	private AControler _sc = null;
+
+	private HashMap<GameState, AControler> _scMap = null;
+
 	public Game()
 	{
-
+		_scMap = new HashMap<GameState, AControler>();
+		_scMap.put(GameState.FREE, new FreeSC(this));
+		_scMap.put(GameState.PLAYING, new PlayingSC(this));
+		_scMap.put(GameState.READY, new ReadySC(this));
+		changeState(GameState.FREE);
 	}
-	
+
 	/**
 	 * 改变游戏状态
 	 * 
 	 * @param state
 	 * @return
 	 */
-	public int changeState(int state)
+	public int changeState(GameState state)
 	{
+		_sc = _scMap.get(state);
 		return 0;
 	}
 
@@ -29,17 +47,10 @@ public class Game extends AGame
 	 * @param player
 	 * @return 错误码
 	 */
+	@Override
 	public int playerEnter(Player player)
 	{
-		return 0;
-	}
-
-	/**
-	 * 玩家进入了房间
-	 */
-	public void onPlayerEnter(Player player)
-	{
-
+		return _sc.playerEnter(player).ordinal();
 	}
 
 	/**
@@ -48,27 +59,21 @@ public class Game extends AGame
 	 * @param player
 	 * @return 错误码
 	 */
-	public int playerExit(Player player)
+	@Override
+	public int playerExit(Player player, int seat)
 	{
-		return 0;
+		return _sc.playerExit(player, seat).ordinal();
 	}
 
-	/**
-	 * 玩家退出了房间
-	 */
-	public void onPlayerExit(Player player)
-	{
 
-	}
 
 	/**
 	 * 游戏更新
 	 */
+	@Override
 	public void update()
 	{
-		//System.out.println("demo");
+		_sc.update();
 	}
-
-
 
 }

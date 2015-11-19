@@ -49,7 +49,17 @@ public class ProtocolS2C
 		 * 进入房间返回
 		 * int32 error		错误码
 		 */
-		ENTER_ROOM_RESPONSE,
+		ENTER_ROOM_RESPONSE_ERROR,
+		
+		/**
+		 * 进入房间成功
+		 * [
+		 * 		int		seat		玩家座位号
+		 * 		int 	game_id		玩家游戏ID
+		 * 		string	name		玩家昵称 		
+		 * ] 
+		 */
+		ENTER_ROOM_RESPONSE_SUCCESS,
 
 		/**
 		 * 进入房间通知
