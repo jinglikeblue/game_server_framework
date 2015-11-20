@@ -87,7 +87,21 @@ public class Room
 	public int enter(Player player)
 	{
 		int error = _game.playerEnter(player);
+		if(error != 0)
+		{
+			
+		}
 		return error;
+	}
+	
+	public void enterResponse(int error)
+	{
+		
+	}	
+	
+	public void enterResponse(Player player, int seat)
+	{
+		
 	}
 
 	/**

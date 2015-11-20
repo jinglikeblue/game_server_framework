@@ -90,12 +90,16 @@ public class Channel
 	/**
 	 * 进入房间返回
 	 */
-	public void enterRoomResponse(int error)
+	public void enterRoomResponseError(int error)
 	{
 		Serialize s = new Serialize();
 		s.writeInt(error);
-		send2Client(ProtocolS2C.E.ENTER_ROOM_RESPONSE, s.toBytes());
+		send2Client(ProtocolS2C.E.ENTER_ROOM_RESPONSE_ERROR, s.toBytes());
 	}
+	
+	/**
+	 * 
+	 */
 
 	/**
 	 * 进入房间通知

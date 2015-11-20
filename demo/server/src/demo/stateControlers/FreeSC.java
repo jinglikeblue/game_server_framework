@@ -22,6 +22,7 @@ public class FreeSC extends AControler
 			if(null == players[seat])
 			{
 				game.room().onPlayerEnter(player, seat);
+				return ErrorCode.NONE;
 			}
 		}
 		return ErrorCode.GAME_ENTER_FAIL_FULL;
