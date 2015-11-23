@@ -42,7 +42,7 @@ public class ExitRoomCacher implements IEventListener, IProtocolCacher
 				break;
 			}
 
-			room.enter(p);
+			room.exit(player);
 			return;
 		} while(false);
 
