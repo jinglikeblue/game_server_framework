@@ -13,6 +13,11 @@ public enum ErrorCode
 	NONE,
 	
 	/**
+	 * 未定义的错误
+	 */
+	UNDEFINED_ERROR,
+	
+	/**
 	 * 游戏进入失败(人满)
 	 */
 	GAME_ENTER_FAIL_FULL,

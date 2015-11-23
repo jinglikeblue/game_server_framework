@@ -2,8 +2,10 @@
 package server;
 
 import java.util.Iterator;
+import java.util.Vector;
 import java.util.Map.Entry;
 
+import vo.protocolVO.s2c.PPlayerInfoVO;
 import model.Hall;
 import model.Room;
 import model.Scene;
@@ -90,39 +92,55 @@ public class Channel
 	/**
 	 * 进入房间返回
 	 */
-	public void enterRoomResponseError(int error)
+	public void enterRoomResponse(int error, Vector<PPlayerInfoVO> players)
 	{
 		Serialize s = new Serialize();
 		s.writeInt(error);
-		send2Client(ProtocolS2C.E.ENTER_ROOM_RESPONSE_ERROR, s.toBytes());
+		if(0 == error)
+		{
+			s.writeShort((short)players.size());
+			Iterator<PPlayerInfoVO> it = players.iterator();
+			while(it.hasNext())
+			{
+				PPlayerInfoVO p = it.next();
+				s.writeInt(p.seat);
+				s.writeInt(p.gameId);
+				s.writeUTFString(p.name);
+			}
+		}
+		send2Client(ProtocolS2C.E.ENTER_ROOM_RESPONSE, s.toBytes());
 	}
-	
-	/**
-	 * 
-	 */
 
 	/**
 	 * 进入房间通知
 	 */
-	public void enterRoomNotify()
+	public void enterRoomNotify(int seat, int gameId, String name)
 	{
-		
+		Serialize s = new Serialize();
+		s.writeInt(seat);
+		s.writeInt(gameId);
+		s.writeUTFString(name);
+		send2Client(ProtocolS2C.E.ENTER_ROOM_NOTIFY, s.toBytes());
 	}
 
 	/**
 	 * 退出房间返回
 	 */
-	public void exitRoomResponse()
+	public void exitRoomResponse(int error)
 	{
-
+		Serialize s = new Serialize();
+		s.writeInt(error);
+		send2Client(ProtocolS2C.E.EXIT_ROOM_RESPONSE, s.toBytes());
 	}
 
 	/**
 	 * 退出房间通知
 	 */
-	public void exitRoomNotify()
+	public void exitRoomNotify(int seat)
 	{
-
+		Serialize s = new Serialize();
+		s.writeInt(seat);
+		send2Client(ProtocolS2C.E.EXIT_ROOM_NOTIFY, s.toBytes());
 	}
 
 }

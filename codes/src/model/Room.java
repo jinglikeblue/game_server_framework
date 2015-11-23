@@ -1,6 +1,9 @@
 
 package model;
 
+import java.util.Vector;
+
+import vo.protocolVO.s2c.PPlayerInfoVO;
 import manager.DataMgr;
 import manager.HallMgr;
 
@@ -84,62 +87,72 @@ public class Room
 		}
 	}
 
-	public int enter(Player player)
+	public void enter(Player player)
 	{
 		int error = _game.playerEnter(player);
 		if(error != 0)
 		{
-			
+			player.channel().enterRoomResponse(error, null);
 		}
-		return error;
-	}
-	
-	public void enterResponse(int error)
-	{
-		
-	}	
-	
-	public void enterResponse(Player player, int seat)
-	{
-		
 	}
 
 	/**
-	 * 玩家进入了房间
+	 * 进入房间回执
 	 */
-	public void onPlayerEnter(Player player, int seat)
+	public void enterResponse(Player player, int seat)
 	{
 		_players[seat] = player;
-		//通知玩家进入房间
-		player.channel().enterRoomResponse(error);
-		
-		//通知其他玩家该事件
+
+		Vector<PPlayerInfoVO> infos = new Vector<PPlayerInfoVO>();
+
+		// 通知其他玩家该事件
 		for(int i = 0; i < _players.length; i++)
 		{
-			if(i != seat && null != _players[i])
+			if(null != _players[i])
 			{
-				Player p = _players[i];				
-				p.channel().enterRoomNotify();
-			}			
+				Player p = _players[i];
+				if(p != player)
+				{
+					// 告诉其它玩家，该玩家登陆
+					p.channel().enterRoomNotify(seat, player.daoVO().gameId, player.daoVO().name);
+					// 加入推送给进入房间玩家的列表
+					infos.add(new PPlayerInfoVO(i, p.daoVO().gameId, p.daoVO().name));
+				}
+			}
 		}
+
+		player.channel().enterRoomResponse(0, infos);
 	}
 
-	public int exit(Player player)
+	public void exit(Player player)
 	{
 		int error = _game.playerExit(player, -1);
-		return error;
+		if(error != 0)
+		{
+			player.channel().exitRoomResponse(error);
+		}
 	}
 
 	/**
 	 * 玩家退出了房间
 	 */
-	public void onPlayerExit(Player player, int seat)
+	public void exitResponse(Player player, int seat)
 	{
 		_players[seat] = null;
-		
-		//通知玩家退出房间
-		
-		//通知其他玩家该事件
+
+		// 通知玩家退出房间
+		player.channel().exitRoomResponse(0);
+
+		// 通知其他玩家该事件
+		for(int i = 0; i < _players.length; i++)
+		{
+			if(null != _players[i])
+			{
+				Player p = _players[i];
+				p.channel().exitRoomNotify(seat);
+			}
+		}
+
 	}
 
 	public void update()

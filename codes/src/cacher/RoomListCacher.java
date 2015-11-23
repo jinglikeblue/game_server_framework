@@ -6,7 +6,7 @@ import java.io.IOException;
 import manager.HallMgr;
 import manager.PlayerMgr;
 import model.Player;
-import vo.protocolVO.PRoomListVO;
+import vo.protocolVO.c2s.PRoomListVO;
 import core.net.server.Client;
 import core.net.server.interfaces.IPacket;
 import core.net.server.interfaces.IProtocolCacher;

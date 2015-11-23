@@ -10,7 +10,7 @@ import manager.HallMgr;
 import manager.PlayerMgr;
 import model.Player;
 import vo.dao.PlayerDaoVO;
-import vo.protocolVO.PLoginVO;
+import vo.protocolVO.c2s.PLoginVO;
 import core.events.EventDispatcher;
 import core.events.IEventListener;
 import core.net.server.Client;

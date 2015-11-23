@@ -1,4 +1,4 @@
-package vo.protocolVO;
+package vo.protocolVO.c2s;
 
 /**
  * 心跳数据

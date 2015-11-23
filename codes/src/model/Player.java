@@ -68,5 +68,11 @@ public class Player
 		_client = client;
 		_channel = new Channel(client);
 	}
+	
+	public void disconnect()
+	{
+		_channel = null;
+		_client.dispose();		
+	}
 
 }

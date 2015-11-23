@@ -21,7 +21,7 @@ public class FreeSC extends AControler
 		{
 			if(null == players[seat])
 			{
-				game.room().onPlayerEnter(player, seat);
+				game.room().enterResponse(player, seat);
 				return ErrorCode.NONE;
 			}
 		}
@@ -31,9 +31,9 @@ public class FreeSC extends AControler
 	@Override
 	public ErrorCode playerExit(Player player, int seat)
 	{
+		Player[] players = game.room().players();
 		if(-1 == seat)
 		{
-			Player[] players = game.room().players();
 			for(int i = 0; i < players.length; i++)
 			{
 				if(player == players[i])
@@ -44,7 +44,14 @@ public class FreeSC extends AControler
 			}
 		}
 
-		game.room().onPlayerExit(player, seat);
+		if(player == players[seat])
+		{
+			game.room().exitResponse(player, seat);
+		}
+		else
+		{
+			return ErrorCode.UNDEFINED_ERROR;
+		}
 		return ErrorCode.NONE;
 	}
 

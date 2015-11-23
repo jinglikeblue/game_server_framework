@@ -45,19 +45,9 @@ public class ProtocolC2S
 		ENTER_ROOM,
 
 		/**
-		 * 退出房间
+		 * 退出所在房间
 		 */
 		EXIT_ROOM,
-
-		/**
-		 * 请求用户信息
-		 */
-		REQUEST_PLAYER_INFO,
-
-		/**
-		 * 更新用户信息
-		 */
-		UPDATE_PLAYER_INFO,
 	}
 
 }

@@ -8,7 +8,7 @@ import manager.PlayerMgr;
 import model.Player;
 import model.Room;
 import model.Scene;
-import vo.protocolVO.PEnterRoomVO;
+import vo.protocolVO.c2s.PEnterRoomVO;
 import core.events.EventDispatcher;
 import core.events.IEventListener;
 import core.net.server.Client;
@@ -47,8 +47,7 @@ public class EnterRoomCacher implements IEventListener, IProtocolCacher
 				break;
 			}
 
-			int error = room.enter(p);
-			p.channel().enterRoomResponse(error);
+			room.enter(p);
 			return;
 		} while(false);
 

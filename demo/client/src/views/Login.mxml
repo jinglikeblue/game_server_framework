@@ -6,5 +6,18 @@
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
 	
-	
+	<s:VGroup>
+		<s:HGroup>
+			<s:Label text="id" />
+			<s:TextInput width="200" />
+		</s:HGroup>
+		<s:HGroup>
+			<s:Label text="name" />
+			<s:TextInput width="200" />
+		</s:HGroup>
+		<s:HGroup>
+			<s:Label text="pwd" />
+			<s:TextInput width="200" />
+		</s:HGroup>		
+	</s:VGroup>
 </s:Group>

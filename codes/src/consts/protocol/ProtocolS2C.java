@@ -3,7 +3,7 @@ package consts.protocol;
 
 /**
  * 服务器到客户端的协议
- * 
+ * 数组的长度为short
  * @author Jing
  */
 public class ProtocolS2C
@@ -46,33 +46,33 @@ public class ProtocolS2C
 		ROOM_LIST_RESPONSE,
 
 		/**
-		 * 进入房间失败返回
-		 * int32 error		错误码
-		 */
-		ENTER_ROOM_RESPONSE_ERROR,
-		
-		/**
-		 * 进入房间成功
+		 * 进入房间返回
+		 * int32 error		错误码(仅当错误码为0时，存在下面数据)
 		 * [
-		 * 		int		seat		玩家座位号
-		 * 		int 	game_id		玩家游戏ID
+		 * 		int32	seat		玩家座位号
+		 * 		int32 	game_id		玩家游戏ID
 		 * 		string	name		玩家昵称 		
 		 * ] 
 		 */
-		ENTER_ROOM_RESPONSE_SUCCESS,
+		ENTER_ROOM_RESPONSE,
 
 		/**
 		 * 进入房间通知
+		 * int32 	seat		玩家座位号
+		 * int32	game_id		玩家游戏ID
+		 * string 	name		玩家昵称
 		 */
 		ENTER_ROOM_NOTIFY,
 
 		/**
 		 * 退出房间返回
+		 * int32 error		错误码
 		 */
 		EXIT_ROOM_RESPONSE,
 
 		/**
 		 * 退出房间通知
+		 * int32	seat		玩家座位号
 		 */
 		EXIT_ROOM_NOTIFY,
 	}
